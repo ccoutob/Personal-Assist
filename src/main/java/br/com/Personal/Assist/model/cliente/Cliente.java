@@ -31,14 +31,14 @@ public class Cliente {
     private String email;
 
     //O CPF será um campo único em nosso sistema
-    @Column(name = "NR_CPF", length = 11, unique = true, nullable = false)
+    @Column(name = "NR_CPF", length = 30, unique = true, nullable = false)
     private String cpf;
 
     @Column(name = "PERFIL_CLIENTE", length = 10, nullable = false)
     @Enumerated(EnumType.STRING)
     private PerfilCliente perfil;
 
-    @Column(name = "DS_OBJETIVO", length = 255)
+    @Column(name = "DS_OBJETIVO", length = 100)
     private String objetivo;
 
     public Cliente(CadastroCliente cliente){

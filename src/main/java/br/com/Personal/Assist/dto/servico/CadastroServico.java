@@ -1,4 +1,7 @@
 package br.com.Personal.Assist.dto.servico;
 
-public record CadastroServico() {
+import br.com.Personal.Assist.model.servico.CategoriaServico;
+
+public record CadastroServico(Long codigo, String nome, String descricao, Integer preco,
+                              CategoriaServico categoria) {
 }

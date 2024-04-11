@@ -1,5 +1,9 @@
 package br.com.Personal.Assist.controller.servico;
 
+import br.com.Personal.Assist.dto.servico.CadastroServico;
+import br.com.Personal.Assist.dto.servico.DetalhesServico;
+import br.com.Personal.Assist.model.servico.Servico;
+import br.com.Personal.Assist.repository.servico.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -13,4 +17,47 @@ import java.util.List;
 @RequestMapping("servico")
 @Controller
 public class ServicoController {
+
+    @Autowired
+    private ServicoRepository repository;
+
+    @GetMapping
+    public ResponseEntity<List<DetalhesServico>> listar(Pageable pageable){
+        var lista = repository.findAll(pageable)
+                .stream().map(DetalhesServico::new).toList();
+        return ResponseEntity.ok(lista);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<DetalhesServico> buscar(@PathVariable("id") Long id){
+        var servico = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DetalhesServico(servico));
+    }
+
+    @PostMapping
+    @Transactional
+    public ResponseEntity<DetalhesServico> cadastrar(@RequestBody CadastroServico servicoPost,
+                                                     UriComponentsBuilder uri){
+        var servico = new Servico(servicoPost);
+        repository.save(servico);
+        var url = uri.path("/servicos/{id}").buildAndExpand(servico.getCodigo()).toUri();
+        return ResponseEntity.created(url).body(new DetalhesServico(servico));
+    }
+
+    @PutMapping("{id}")
+    @Transactional
+    public ResponseEntity<DetalhesServico> atualizar(@PathVariable("id") Long id,
+                                                     @RequestBody CadastroServico servicoPut){
+        var servico = repository.getReferenceById(id);
+        servico.atualizarDados(servicoPut);
+        return ResponseEntity.ok(new DetalhesServico(servico));
+    }
+
+    @DeleteMapping("{id}")
+    @Transactional
+    public ResponseEntity<Void> deletar(@PathVariable("id") Long id){
+        repository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

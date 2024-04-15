@@ -56,6 +56,14 @@ Nosso sistema fornece serviços de recomendação de negócios juntamente com um
 <li> A exceção será lançada caso tentemos realizar a requisição de algum dado que não existe, por exemplo, um id</li>
 </div>
 
+## ❗❗ COMO NOSSO SISTEMA FUNCINA ❗❗
+<li> Inicie a aplicação spring após clonar o repositório ou baixar o arquivo do projeto</li>
+<li> Baixe o arquivo de requisições do postman que está logo abaixo das tabelas de endpoints</li>
+<li> Importe o arquivo para o seu postman</li>
+<li> realize as requisições de GET, POST, PUT e DELETE</li>
+<li> Utilize na URL "http://localhost:8080/{Endpoint}" Confira abaixo em Endpoints</li>
+
+
 <h2 name="endpoints">🌐 Endpoints</h2>
 
 ### 💻 Cliente
@@ -107,6 +115,8 @@ Nosso sistema fornece serviços de recomendação de negócios juntamente com um
 | POST   | /api/suporte                 | Cadastrar um ticket    |
 | PUT    | /api/suporte/&lt;id&gt;      | Atualizar um ticket    |
 | DELETE | /api/suporte/&lt;id&gt;      | Deletar um ticket      |
+
+❗❗ Acesse o arquivo de requisições do postman <a href="https://github.com/ccoutob/Personal-Assist/blob/main/Personal_Assist_Postman_Collection">AQUI</a> ❗❗
 
 ### 🧑🏻‍💻 Autor 
 > Cauã Couto Basques - Turma 2TDSS

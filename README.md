@@ -68,53 +68,53 @@ Nosso sistema fornece serviços de recomendação de negócios juntamente com um
 
 ### 💻 Cliente
 
-| Método | Endpoint                      | Descrição                |
-| ------ | ----------------------------- | -------------------------|
-| GET    | /api/clientes                 | Listar todos os clientes |
-| GET    | /api/clientes/&lt;id&gt;      | Buscar cliente pelo id   |
-| POST   | /api/clientes                 | Cadastrar um cliente     |
-| PUT    | /api/clientes/&lt;id&gt;      | Atualizar um cliente     |
-| DELETE | /api/clientes/&lt;id&gt;      | Deletar um cliente       |
+| Método | Endpoint                  | Descrição                |
+| ------ | ------------------------- | -------------------------|
+| GET    | /clientes                 | Listar todos os clientes |
+| GET    | /clientes/&lt;id&gt;      | Buscar cliente pelo id   |
+| POST   | /clientes                 | Cadastrar um cliente     |
+| PUT    | /clientes/&lt;id&gt;      | Atualizar um cliente     |
+| DELETE | /clientes/&lt;id&gt;      | Deletar um cliente       |
 
 ### 💻 Empresa
 
-| Método | Endpoint                      | Descrição                |
-| ------ | ----------------------------- | -------------------------|
-| GET    | /api/empresas                 | Listar todos as empresas |
-| GET    | /api/empresas/&lt;id&gt;      | Buscar empresa pelo id   |
-| POST   | /api/empresas                 | Cadastrar uma empresa    |
-| PUT    | /api/empresas/&lt;id&gt;      | Atualizar uma empresa    |
-| DELETE | /api/empresas/&lt;id&gt;      | Deletar uma empresa      |
+| Método | Endpoint                  | Descrição                |
+| ------ | --------------------------| -------------------------|
+| GET    | /empresas                 | Listar todos as empresas |
+| GET    | /empresas/&lt;id&gt;      | Buscar empresa pelo id   |
+| POST   | /empresas                 | Cadastrar uma empresa    |
+| PUT    | /empresas/&lt;id&gt;      | Atualizar uma empresa    |
+| DELETE | /empresas/&lt;id&gt;      | Deletar uma empresa      |
 
 ### 💻 Estatistica
 
-| Método | Endpoint                      | Descrição                    |
-| ------ | ----------------------------- | -----------------------------|
-| GET    | /api/estatisticas             | Listar todos as estatisticas |
-| GET    | /api/estatisticas/&lt;id&gt;  | Buscar estatistica pelo id   |
-| POST   | /api/estatisticas             | Cadastrar uma estatistica    |
-| PUT    | /api/estatisticas/&lt;id&gt;  | Atualizar uma estatistica    |
-| DELETE | /api/estatisticas/&lt;id&gt;  | Deletar uma estatistica      |
+| Método | Endpoint                  | Descrição                    |
+| ------ | ------------------------- | -----------------------------|
+| GET    | /estatisticas             | Listar todos as estatisticas |
+| GET    | /estatisticas/&lt;id&gt;  | Buscar estatistica pelo id   |
+| POST   | /estatisticas             | Cadastrar uma estatistica    |
+| PUT    | /estatisticas/&lt;id&gt;  | Atualizar uma estatistica    |
+| DELETE | /estatisticas/&lt;id&gt;  | Deletar uma estatistica      |
 
 ### 💻 Servico
 
-| Método | Endpoint                     | Descrição                |
-| ------ | ---------------------------- | -------------------------|
-| GET    | /api/servico                 | Listar todos os servicos |
-| GET    | /api/servico/&lt;id&gt;      | Buscar servico pelo id   |
-| POST   | /api/servico                 | Cadastrar um servico     |
-| PUT    | /api/servico/&lt;id&gt;      | Atualizar um servico     |
-| DELETE | /api/servico/&lt;id&gt;      | Deletar um servico       |
+| Método | Endpoint                 | Descrição                |
+| ------ | -------------------------| -------------------------|
+| GET    | /servico                 | Listar todos os servicos |
+| GET    | /servico/&lt;id&gt;      | Buscar servico pelo id   |
+| POST   | /servico                 | Cadastrar um servico     |
+| PUT    | /servico/&lt;id&gt;      | Atualizar um servico     |
+| DELETE | /servico/&lt;id&gt;      | Deletar um servico       |
 
 ### 💻 Suporte
 
-| Método | Endpoint                     | Descrição              |
-| ------ | -----------------------------| -----------------------|
-| GET    | /api/suporte                 | Listar todos um ticket |
-| GET    | /api/suporte/&lt;id&gt;      | Buscar ticket pelo id  |
-| POST   | /api/suporte                 | Cadastrar um ticket    |
-| PUT    | /api/suporte/&lt;id&gt;      | Atualizar um ticket    |
-| DELETE | /api/suporte/&lt;id&gt;      | Deletar um ticket      |
+| Método | Endpoint                 | Descrição              |
+| ------ | -------------------------| -----------------------|
+| GET    | /suporte                 | Listar todos um ticket |
+| GET    | /suporte/&lt;id&gt;      | Buscar ticket pelo id  |
+| POST   | /suporte                 | Cadastrar um ticket    |
+| PUT    | /suporte/&lt;id&gt;      | Atualizar um ticket    |
+| DELETE | /suporte/&lt;id&gt;      | Deletar um ticket      |
 
 ❗❗ Acesse o arquivo de requisições do postman <a href="https://github.com/ccoutob/Personal-Assist/blob/main/Personal_Assist_Postman_Collection">AQUI</a> ❗❗
 

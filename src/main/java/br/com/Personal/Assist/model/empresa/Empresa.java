@@ -15,21 +15,25 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "TB_EMPRESA")
+@Table(name = "TB_EMPRESA")//Tabela do banco de dados
 @EntityListeners(AuditingEntityListener.class)
 public class Empresa {
 
+    //Chave Primária
     @Id
     @GeneratedValue
     @Column(name = "ID_EMPRESA")
     private Long codigo;
 
+    //Coluna da tabela
     @Column(name = "NM_EMPRESA", length = 100, nullable = false)
     private String nome;
 
+    //Coluna da tabela
     @Column(name = "CNPJ_EMPRESA", length = 14, nullable = false)
     private String cnpj;
 
+    //Coluna da tabela
     @Column(name = "SEG_EMPRESA", length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private SegEmpresa seguimento;

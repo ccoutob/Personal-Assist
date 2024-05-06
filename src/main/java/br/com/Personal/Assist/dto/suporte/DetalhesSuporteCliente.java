@@ -8,12 +8,12 @@ import br.com.Personal.Assist.model.suporte.Suporte;
 
 import java.time.LocalDate;
 
-public record DetalhesSuporte(Long codigo, String descricao, StatusTicket status,
-                              PrioridadeTicket prioridade, LocalDate dataCriacao,
-                              LocalDate dataFinal) {
+public record DetalhesSuporteCliente(Long codigo, String descricao, StatusTicket status,
+                                     PrioridadeTicket prioridade, LocalDate dataCriacao,
+                                     LocalDate dataFinal, DetalhesCliente cliente) {
 
-    public DetalhesSuporte(Suporte suporte){
+    public DetalhesSuporteCliente(Suporte suporte){
         this(suporte.getCodigo(), suporte.getDescricao(), suporte.getStatus(), suporte.getPrioridade(),
-        suporte.getDataCriacao(), suporte.getDataFinal());
+                suporte.getDataCriacao(), suporte.getDataFinal(), new DetalhesCliente(suporte.getCliente()));
     }
 }

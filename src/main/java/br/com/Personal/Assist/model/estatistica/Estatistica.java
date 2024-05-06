@@ -1,6 +1,8 @@
 package br.com.Personal.Assist.model.estatistica;
 
 import br.com.Personal.Assist.dto.estatistica.CadastroEstatistica;
+import br.com.Personal.Assist.model.cliente.Cliente;
+import br.com.Personal.Assist.model.empresa.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,6 +42,15 @@ public class Estatistica {
     @Column(name = "DT_REGISTRO", nullable = false)
     private LocalDate dataRegistro;
 
+    @ManyToOne
+    @JoinColumn(name = "estatisticasEmpresa")
+    private Empresa empresa;
+
+    @ManyToOne
+    @JoinColumn(name = "estatisticasCliente")
+    private Cliente cliente;
+
+
     public Estatistica(CadastroEstatistica estatistica){
         mediaCrescimento = estatistica.mediaCrescimento();
         crescimentoMensal = estatistica.crescimentoMensal();
@@ -47,6 +58,25 @@ public class Estatistica {
         analise = estatistica.analise();
         dataRegistro = estatistica.dataRegistro();
     }
+
+    public Estatistica(CadastroEstatistica estatistica, Empresa empresa){
+        mediaCrescimento = estatistica.mediaCrescimento();
+        crescimentoMensal = estatistica.crescimentoMensal();
+        receita = estatistica.receita();
+        analise = estatistica.analise();
+        dataRegistro = estatistica.dataRegistro();
+        this.empresa = empresa;
+    }
+
+    public Estatistica(CadastroEstatistica estatistica, Cliente cliente){
+        mediaCrescimento = estatistica.mediaCrescimento();
+        crescimentoMensal = estatistica.crescimentoMensal();
+        receita = estatistica.receita();
+        analise = estatistica.analise();
+        dataRegistro = estatistica.dataRegistro();
+        this.cliente = cliente;
+    }
+
 
     public void atualizarDados(CadastroEstatistica atualizacao){
         if(atualizacao.mediaCrescimento() != null)

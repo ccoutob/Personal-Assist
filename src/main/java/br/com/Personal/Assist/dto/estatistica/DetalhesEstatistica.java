@@ -1,5 +1,6 @@
 package br.com.Personal.Assist.dto.estatistica;
 
+import br.com.Personal.Assist.dto.empresa.DetalhesEmpresa;
 import br.com.Personal.Assist.model.estatistica.Estatistica;
 
 import java.time.LocalDate;

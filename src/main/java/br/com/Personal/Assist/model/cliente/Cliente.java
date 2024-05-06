@@ -2,12 +2,16 @@ package br.com.Personal.Assist.model.cliente;
 
 
 import br.com.Personal.Assist.dto.cliente.CadastroCliente;
+import br.com.Personal.Assist.model.estatistica.Estatistica;
+import br.com.Personal.Assist.model.suporte.Suporte;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -45,6 +49,12 @@ public class Cliente {
     //Coluna da tabela
     @Column(name = "DS_OBJETIVO", length = 100)
     private String objetivo;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Suporte> suportes;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Estatistica> estatisticasCliente;
 
     //Dto da classe
     public Cliente(CadastroCliente cliente){

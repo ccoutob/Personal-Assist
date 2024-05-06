@@ -3,6 +3,8 @@ package br.com.Personal.Assist.controller.suporte;
 import br.com.Personal.Assist.dto.servico.CadastroServico;
 import br.com.Personal.Assist.dto.suporte.CadastroSuporte;
 import br.com.Personal.Assist.dto.suporte.DetalhesSuporte;
+import br.com.Personal.Assist.dto.suporte.DetalhesSuporteCliente;
+import br.com.Personal.Assist.dto.suporte.DetalhesSuporteEmpresa;
 import br.com.Personal.Assist.model.suporte.Suporte;
 import br.com.Personal.Assist.repository.suporte.SuporteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class SuporteController {
     private SuporteRepository repository;
 
     @GetMapping
-    public ResponseEntity<List<DetalhesSuporte>> listar(Pageable pageable){
+    public ResponseEntity<List<DetalhesSuporte>> listarEmpresas(Pageable pageable){
         var lista = repository.findAll(pageable)
                 .stream().map(DetalhesSuporte::new).toList();
         return ResponseEntity.ok(lista);

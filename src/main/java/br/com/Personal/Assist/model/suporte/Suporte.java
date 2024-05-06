@@ -2,6 +2,8 @@ package br.com.Personal.Assist.model.suporte;
 
 import br.com.Personal.Assist.dto.estatistica.CadastroEstatistica;
 import br.com.Personal.Assist.dto.suporte.CadastroSuporte;
+import br.com.Personal.Assist.model.cliente.Cliente;
+import br.com.Personal.Assist.model.empresa.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -43,12 +45,38 @@ public class Suporte {
     @Column(name = "DT_FINAL")
     private LocalDate dataFinal;
 
+    @ManyToOne
+    @JoinColumn(name = "ID_EMPRESA")
+    private Empresa empresa;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_CLIENTE")
+    private Cliente cliente;
+
     public Suporte(CadastroSuporte suporte){
         descricao = suporte.descricao();
         status = suporte.status();
         prioridade = suporte.prioridade();
         dataCriacao = suporte.dataCriacao();
         dataFinal = suporte.dataFinal();
+    }
+
+    public Suporte(CadastroSuporte suporte, Empresa empresa){
+        descricao = suporte.descricao();
+        status = suporte.status();
+        prioridade = suporte.prioridade();
+        dataCriacao = suporte.dataCriacao();
+        dataFinal = suporte.dataFinal();
+        this.empresa = empresa;
+    }
+
+    public Suporte(CadastroSuporte suporte, Cliente cliente){
+        descricao = suporte.descricao();
+        status = suporte.status();
+        prioridade = suporte.prioridade();
+        dataCriacao = suporte.dataCriacao();
+        dataFinal = suporte.dataFinal();
+        this.cliente = cliente;
     }
 
     public void atualizarDados(CadastroSuporte atualizacao){

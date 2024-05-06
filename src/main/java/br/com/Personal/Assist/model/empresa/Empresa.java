@@ -2,12 +2,17 @@ package br.com.Personal.Assist.model.empresa;
 
 import br.com.Personal.Assist.dto.cliente.CadastroCliente;
 import br.com.Personal.Assist.dto.empresa.CadastroEmpresa;
+import br.com.Personal.Assist.dto.empresa.DetalhesEmpresa;
+import br.com.Personal.Assist.model.estatistica.Estatistica;
+import br.com.Personal.Assist.model.suporte.Suporte;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,6 +42,12 @@ public class Empresa {
     @Column(name = "SEG_EMPRESA", length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private SegEmpresa seguimento;
+
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+    private List<Suporte> suportes;
+
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+    private List<Estatistica> estatisticasEmpresa;
 
     public Empresa(CadastroEmpresa empresa){
         nome = empresa.nome();

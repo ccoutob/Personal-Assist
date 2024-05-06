@@ -32,12 +32,6 @@ public class EmpresaController {
     @Autowired
     private EmpresaRepository empresaRepository;
 
-    @Autowired
-    private SuporteRepository suporteRepository;
-
-    @Autowired
-    private EstatisticaRepository estatisticarepository;
-
     @GetMapping
     public ResponseEntity<List<DetalhesEmpresa>> listar(Pageable pageable){
         var lista = empresaRepository.findAll(pageable)
@@ -49,36 +43,6 @@ public class EmpresaController {
     public ResponseEntity<DetalhesEmpresa> buscar(@PathVariable("id") Long id){
         var empresa = empresaRepository.getReferenceById(id);
         return ResponseEntity.ok(new DetalhesEmpresa(empresa));
-    }
-
-    //Post da tabela Suporte
-    @PostMapping("{id}/suporteEmpresa")
-    @Transactional
-    public ResponseEntity<DetalhesSuporteEmpresa> postSuporte(@PathVariable("id") Long id,
-                                                       @RequestBody @Valid CadastroSuporte dto,
-                                                       UriComponentsBuilder uriBuilder){
-        //chamar o repository post para pesquisar o post pelo codigo
-        var empresa = empresaRepository.getReferenceById(id);
-        //instanciar o comentário com o dto
-        var suporte = new Suporte(dto, empresa);
-        suporteRepository.save(suporte);
-        var uri = uriBuilder.path("suporteEmpresa/{id}").buildAndExpand(suporte.getCodigo()).toUri();
-        return ResponseEntity.created(uri).body(new DetalhesSuporteEmpresa(suporte));
-    }
-
-    //Post da tabela Estatistica
-    @PostMapping("{id}/estatisticaEmpresa")
-    @Transactional
-    public ResponseEntity<DetalhesEstatisticaEmpresa> postEstatistica(@PathVariable("id") Long id,
-                                                           @RequestBody @Valid CadastroEstatistica dto,
-                                                           UriComponentsBuilder uriBuilder){
-        //chamar o repository post para pesquisar o post pelo codigo
-        var empresa = empresaRepository.getReferenceById(id);
-        //instanciar o comentário com o dto
-        var estatistica = new Estatistica(dto, empresa);
-        estatisticarepository.save(estatistica);
-        var uri = uriBuilder.path("estatisticaEmpresa/{id}").buildAndExpand(estatistica.getCodigo()).toUri();
-        return ResponseEntity.created(uri).body(new DetalhesEstatisticaEmpresa(estatistica));
     }
 
     //Post da empresa

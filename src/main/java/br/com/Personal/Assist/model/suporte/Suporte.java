@@ -53,14 +53,6 @@ public class Suporte {
     @JoinColumn(name = "ID_CLIENTE")
     private Cliente cliente;
 
-    public Suporte(CadastroSuporte suporte){
-        descricao = suporte.descricao();
-        status = suporte.status();
-        prioridade = suporte.prioridade();
-        dataCriacao = suporte.dataCriacao();
-        dataFinal = suporte.dataFinal();
-    }
-
     public Suporte(CadastroSuporte suporte, Empresa empresa){
         descricao = suporte.descricao();
         status = suporte.status();

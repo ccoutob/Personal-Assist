@@ -5,7 +5,6 @@ import br.com.Personal.Assist.dto.cliente.DetalhesCliente;
 import br.com.Personal.Assist.dto.estatistica.CadastroEstatistica;
 import br.com.Personal.Assist.dto.estatistica.DetalhesEstatisticaCliente;
 import br.com.Personal.Assist.dto.suporte.CadastroSuporte;
-import br.com.Personal.Assist.dto.suporte.DetalhesSuporte;
 import br.com.Personal.Assist.dto.suporte.DetalhesSuporteCliente;
 import br.com.Personal.Assist.model.cliente.Cliente;
 import br.com.Personal.Assist.model.estatistica.Estatistica;
@@ -31,12 +30,6 @@ public class ClienteController {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    @Autowired
-    private SuporteRepository suporteRepository;
-
-    @Autowired
-    private EstatisticaRepository estatisticaRepository;
-
     @GetMapping
     public ResponseEntity<List<DetalhesCliente>> listar(Pageable pageable){
         var lista = clienteRepository.findAll(pageable)
@@ -48,36 +41,6 @@ public class ClienteController {
     public ResponseEntity<DetalhesCliente> buscar(@PathVariable("id") Long id){
         var cliente = clienteRepository.getReferenceById(id);
         return ResponseEntity.ok(new DetalhesCliente(cliente));
-    }
-
-    //Post da tabela Suporte
-    @PostMapping("{id}/suporteCliente")
-    @Transactional
-    public ResponseEntity<DetalhesSuporteCliente> postCliente(@PathVariable("id") Long id,
-                                                       @RequestBody @Valid CadastroSuporte dto,
-                                                       UriComponentsBuilder uriBuilder){
-        //chamar o repository post para pesquisar o post pelo codigo
-        var cliente = clienteRepository.getReferenceById(id);
-        //instanciar o comentário com o dto
-        var suporte = new Suporte(dto, cliente);
-        suporteRepository.save(suporte);
-        var uri = uriBuilder.path("suporteCliente/{id}").buildAndExpand(suporte.getCodigo()).toUri();
-        return ResponseEntity.created(uri).body(new DetalhesSuporteCliente(suporte));
-    }
-
-    //Post da tabela Estatistica
-    @PostMapping("{id}/estatisticaCliente")
-    @Transactional
-    public ResponseEntity<DetalhesEstatisticaCliente> postEstatistica(@PathVariable("id") Long id,
-                                                           @RequestBody @Valid CadastroEstatistica dto,
-                                                           UriComponentsBuilder uriBuilder){
-        //chamar o repository post para pesquisar o post pelo codigo
-        var cliente = clienteRepository.getReferenceById(id);
-        //instanciar o comentário com o dto
-        var estatistica = new Estatistica(dto, cliente);
-        estatisticaRepository.save(estatistica);
-        var uri = uriBuilder.path("estatisticaCliente/{id}").buildAndExpand(estatistica.getCodigo()).toUri();
-        return ResponseEntity.created(uri).body(new DetalhesEstatisticaCliente(estatistica));
     }
 
     @PostMapping

@@ -50,7 +50,7 @@ public class Cliente {
     @Column(name = "DS_OBJETIVO", length = 100)
     private String objetivo;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Suporte> suportes;
 
     @OneToMany(mappedBy = "cliente")

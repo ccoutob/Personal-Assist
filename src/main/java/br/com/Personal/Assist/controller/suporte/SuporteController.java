@@ -6,7 +6,10 @@ import br.com.Personal.Assist.dto.suporte.DetalhesSuporte;
 import br.com.Personal.Assist.dto.suporte.DetalhesSuporteCliente;
 import br.com.Personal.Assist.dto.suporte.DetalhesSuporteEmpresa;
 import br.com.Personal.Assist.model.suporte.Suporte;
+import br.com.Personal.Assist.repository.cliente.ClienteRepository;
+import br.com.Personal.Assist.repository.empresa.EmpresaRepository;
 import br.com.Personal.Assist.repository.suporte.SuporteRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -20,47 +23,66 @@ import java.util.List;
 @RequestMapping("suporte")
 @Controller
 public class SuporteController {
+    @Autowired
+    private ClienteRepository clienteRepository;
+    @Autowired
+    private SuporteRepository suporteRepository;
 
     @Autowired
-    private SuporteRepository repository;
+    private EmpresaRepository empresaRepository;
 
     @GetMapping
-    public ResponseEntity<List<DetalhesSuporte>> listarEmpresas(Pageable pageable){
-        var lista = repository.findAll(pageable)
-                .stream().map(DetalhesSuporte::new).toList();
+    public ResponseEntity<List<DetalhesSuporteCliente>> listar(Pageable pageable){
+        var lista = suporteRepository.findAll(pageable)
+                .stream().map(DetalhesSuporteCliente::new).toList();
         return ResponseEntity.ok(lista);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<DetalhesSuporte> buscar(@PathVariable("id") Long id){
-        var suporte = repository.getReferenceById(id);
-        return ResponseEntity.ok(new DetalhesSuporte(suporte));
+    public ResponseEntity<DetalhesSuporteCliente> buscar(@PathVariable("id") Long id){
+        var suporte = suporteRepository.getReferenceById(id);
+        return ResponseEntity.ok(new DetalhesSuporteCliente(suporte));
     }
 
-    @PostMapping
+    //Post da tabela Suporte para Clientes
+    @PostMapping("{id}/suporteCliente")
     @Transactional
-    public ResponseEntity<DetalhesSuporte> cadastrar(@RequestBody CadastroSuporte suportePost,
-                                                     UriComponentsBuilder uri){
-        var suporte = new Suporte(suportePost);
-        repository.save(suporte);
-        var url = uri.path("/suporte/{id}").buildAndExpand(suporte.getCodigo()).toUri();
-        return ResponseEntity.created(url).body(new DetalhesSuporte(suporte));
+    public ResponseEntity<DetalhesSuporteCliente> postSuporteCliente(@PathVariable("id") Long id,
+                                                              @RequestBody @Valid CadastroSuporte dto,
+                                                              UriComponentsBuilder uriBuilder){
+        var cliente = clienteRepository.getReferenceById(id);
+        var suporte = new Suporte(dto, cliente);
+        suporteRepository.save(suporte);
+        var uri = uriBuilder.path("suporteCliente/{id}").buildAndExpand(suporte.getCodigo()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesSuporteCliente(suporte));
     }
 
-    @PutMapping("{id}")
+    //Post da tabela Suporte para Empresas
+    @PostMapping("{id}/suporteEmpresa")
     @Transactional
-    public ResponseEntity<DetalhesSuporte> atualizar(@PathVariable("id") Long id,
-                                                     @RequestBody CadastroSuporte suportePut){
-        var suporte = repository.getReferenceById(id);
-        suporte.atualizarDados(suportePut);
-        return ResponseEntity.ok(new DetalhesSuporte(suporte));
+    public ResponseEntity<DetalhesSuporteEmpresa> postSuporteEmpresa(@PathVariable("id") Long id,
+                                                              @RequestBody @Valid CadastroSuporte dto,
+                                                              UriComponentsBuilder uriBuilder){
+        var empresa = empresaRepository.getReferenceById(id);
+        var suporte = new Suporte(dto, empresa);
+        suporteRepository.save(suporte);
+        var uri = uriBuilder.path("suporteCliente/{id}").buildAndExpand(suporte.getCodigo()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesSuporteEmpresa(suporte));
     }
 
     @DeleteMapping("{id}")
     @Transactional
     public ResponseEntity<Void> deletar(@PathVariable("id") Long id){
-        repository.deleteById(id);
+        suporteRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("{id}")
+    @Transactional
+    public ResponseEntity<DetalhesSuporteCliente> atualizar(@PathVariable("id") Long id,
+                                                     @RequestBody CadastroSuporte suportePut){
+        var suporte = suporteRepository.getReferenceById(id);
+        suporte.atualizarDados(suportePut);
+        return ResponseEntity.ok(new DetalhesSuporteCliente(suporte));
+    }
 }

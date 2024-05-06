@@ -32,8 +32,14 @@ public class EstatisticaController {
     @Autowired
     private EstatisticaRepository estatisticarepository;
 
+    @Autowired
+    private EmpresaRepository empresaRepository;
+
+    @Autowired
+    private ClienteRepository clienteRepository;
+
     @GetMapping
-    public ResponseEntity<List<DetalhesEstatistica>> listarEmpresas(Pageable pageable){
+    public ResponseEntity<List<DetalhesEstatistica>> listar(Pageable pageable){
         var lista = estatisticarepository.findAll(pageable)
                 .stream().map(DetalhesEstatistica::new).toList();
         return ResponseEntity.ok(lista);
@@ -45,14 +51,30 @@ public class EstatisticaController {
         return ResponseEntity.ok(new DetalhesEstatistica(estatistica));
     }
 
-    @PostMapping
+    //Post da tabela Estatistica para Clientes
+    @PostMapping("{id}/estatisticaCliente")
     @Transactional
-    public ResponseEntity<DetalhesEstatistica> cadastrar(@RequestBody CadastroEstatistica estatisticaPost,
-                                                     UriComponentsBuilder uri){
-        var estatistica = new Estatistica(estatisticaPost);
+    public ResponseEntity<DetalhesEstatisticaCliente> postEstatisticaCliente(@PathVariable("id") Long id,
+                                                                      @RequestBody @Valid CadastroEstatistica dto,
+                                                                      UriComponentsBuilder uriBuilder){
+        var cliente = clienteRepository.getReferenceById(id);
+        var estatistica = new Estatistica(dto, cliente);
         estatisticarepository.save(estatistica);
-        var url = uri.path("/estatistica/{id}").buildAndExpand(estatistica.getCodigo()).toUri();
-        return ResponseEntity.created(url).body(new DetalhesEstatistica(estatistica));
+        var uri = uriBuilder.path("estatisticaCliente/{id}").buildAndExpand(estatistica.getCodigo()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesEstatisticaCliente(estatistica));
+    }
+
+    //Post da tabela Estatistica
+    @PostMapping("{id}/estatisticaEmpresa")
+    @Transactional
+    public ResponseEntity<DetalhesEstatisticaEmpresa> postEstatisticaEmpresa(@PathVariable("id") Long id,
+                                                                      @RequestBody @Valid CadastroEstatistica dto,
+                                                                      UriComponentsBuilder uriBuilder){
+        var empresa = empresaRepository.getReferenceById(id);
+        var estatistica = new Estatistica(dto, empresa);
+        estatisticarepository.save(estatistica);
+        var uri = uriBuilder.path("estatisticaEmpresa/{id}").buildAndExpand(estatistica.getCodigo()).toUri();
+        return ResponseEntity.created(uri).body(new DetalhesEstatisticaEmpresa(estatistica));
     }
 
     @PutMapping("{id}")

@@ -57,7 +57,7 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private List<Estatistica> estatisticasCliente;
 
-    @OneToOne(mappedBy = "cliente", cascade = CascadeType.REMOVE)
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
     private Feedback feedback;
 
     //Dto da classe

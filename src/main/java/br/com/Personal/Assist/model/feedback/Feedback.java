@@ -35,7 +35,7 @@ public class Feedback {
     private String negativo;
 
     @OneToOne
-    @JoinColumn(name = "id_feedback", nullable = false)
+    @JoinColumn(name = "ID_CLIENTE", nullable = false, unique = true)
     private Cliente cliente;
 
     public Feedback(CadastroCliente feedback){
@@ -43,5 +43,21 @@ public class Feedback {
         positivo = feedback.positivo();
         negativo = feedback.negativo();
     }
+
+    public Feedback(CadastroFeedback feedback){
+        nota = feedback.nota();
+        positivo = feedback.positivo();
+        negativo = feedback.negativo();
+    }
+
+    public void atualizarDados(CadastroFeedback atualizacao) {
+        if (atualizacao.nota() != null)
+            nota = atualizacao.nota();
+        if (atualizacao.positivo() != null)
+            positivo = atualizacao.positivo();
+        if (atualizacao.negativo() != null)
+            negativo = atualizacao.negativo();
+    }
+
 
 }

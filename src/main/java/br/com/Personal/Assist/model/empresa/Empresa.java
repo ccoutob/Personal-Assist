@@ -4,6 +4,7 @@ import br.com.Personal.Assist.dto.cliente.CadastroCliente;
 import br.com.Personal.Assist.dto.empresa.CadastroEmpresa;
 import br.com.Personal.Assist.dto.empresa.DetalhesEmpresa;
 import br.com.Personal.Assist.model.estatistica.Estatistica;
+import br.com.Personal.Assist.model.servico.Servico;
 import br.com.Personal.Assist.model.suporte.Suporte;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +13,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -48,6 +51,12 @@ public class Empresa {
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
     private List<Estatistica> estatisticasEmpresa;
+
+    @ManyToMany
+    @JoinTable(name="TB_EMPRESA_SERVICO",
+            joinColumns = @JoinColumn(name="ID_EMPRESA"),
+            inverseJoinColumns = @JoinColumn(name="ID_SERVICO"))
+    private Set<Servico> servico = new HashSet<>();
 
     public Empresa(CadastroEmpresa empresa){
         nome = empresa.nome();

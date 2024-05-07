@@ -2,6 +2,7 @@ package br.com.Personal.Assist.controller.empresa;
 
 import br.com.Personal.Assist.dto.empresa.CadastroEmpresa;
 import br.com.Personal.Assist.dto.empresa.DetalhesEmpresa;
+import br.com.Personal.Assist.dto.empresa.DetalhesEmpresaServico;
 import br.com.Personal.Assist.dto.estatistica.CadastroEstatistica;
 import br.com.Personal.Assist.dto.estatistica.DetalhesEstatistica;
 import br.com.Personal.Assist.dto.estatistica.DetalhesEstatisticaEmpresa;
@@ -13,6 +14,7 @@ import br.com.Personal.Assist.model.estatistica.Estatistica;
 import br.com.Personal.Assist.model.suporte.Suporte;
 import br.com.Personal.Assist.repository.empresa.EmpresaRepository;
 import br.com.Personal.Assist.repository.estatistica.EstatisticaRepository;
+import br.com.Personal.Assist.repository.servico.ServicoRepository;
 import br.com.Personal.Assist.repository.suporte.SuporteRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ public class EmpresaController {
 
     @Autowired
     private EmpresaRepository empresaRepository;
+
+    @Autowired
+    private ServicoRepository servicoRepository;
 
     @GetMapping
     public ResponseEntity<List<DetalhesEmpresa>> listar(Pageable pageable){
@@ -54,6 +59,16 @@ public class EmpresaController {
         empresaRepository.save(empresa);
         var url = uri.path("/empresas/{id}").buildAndExpand(empresa.getCodigo()).toUri();
         return ResponseEntity.created(url).body(new DetalhesEmpresa(empresa));
+    }
+
+    @PutMapping("{idEmpresa}/servico/{idServico}")
+    @Transactional
+    public ResponseEntity<DetalhesEmpresaServico> put(@PathVariable("idEmpresa") Long idEmpresa,
+                                                      @PathVariable("idServico") Long idServico) {
+        var empresa = empresaRepository.getReferenceById(idEmpresa);
+        var servico = servicoRepository.getReferenceById(idServico);
+        empresa.getServico().add(servico); //Acessa a lista de tags do post e adiciona a nova tag
+        return ResponseEntity.ok(new DetalhesEmpresaServico(empresa));
     }
 
     @PutMapping("{id}")

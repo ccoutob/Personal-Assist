@@ -4,6 +4,7 @@ package br.com.Personal.Assist.model.cliente;
 import br.com.Personal.Assist.dto.cliente.CadastroCliente;
 import br.com.Personal.Assist.model.estatistica.Estatistica;
 import br.com.Personal.Assist.model.feedback.Feedback;
+import br.com.Personal.Assist.model.servico.Servico;
 import br.com.Personal.Assist.model.suporte.Suporte;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +13,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -59,6 +62,12 @@ public class Cliente {
 
     @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
     private Feedback feedback;
+
+    @ManyToMany
+    @JoinTable(name="TB_CLIENTE_SERVICO",
+            joinColumns = @JoinColumn(name="ID_CLIENTE"),
+            inverseJoinColumns = @JoinColumn(name="ID_SERVICO"))
+    private Set<Servico> servico = new HashSet<>();
 
     //Dto da classe
     public Cliente(CadastroCliente cliente){

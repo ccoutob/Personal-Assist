@@ -2,6 +2,8 @@ package br.com.Personal.Assist.controller.cliente;
 
 import br.com.Personal.Assist.dto.cliente.CadastroCliente;
 import br.com.Personal.Assist.dto.cliente.DetalhesCliente;
+import br.com.Personal.Assist.dto.cliente.DetalhesClienteServico;
+import br.com.Personal.Assist.dto.empresa.DetalhesEmpresaServico;
 import br.com.Personal.Assist.dto.estatistica.CadastroEstatistica;
 import br.com.Personal.Assist.dto.estatistica.DetalhesEstatisticaCliente;
 import br.com.Personal.Assist.dto.suporte.CadastroSuporte;
@@ -11,6 +13,7 @@ import br.com.Personal.Assist.model.estatistica.Estatistica;
 import br.com.Personal.Assist.model.suporte.Suporte;
 import br.com.Personal.Assist.repository.cliente.ClienteRepository;
 import br.com.Personal.Assist.repository.estatistica.EstatisticaRepository;
+import br.com.Personal.Assist.repository.servico.ServicoRepository;
 import br.com.Personal.Assist.repository.suporte.SuporteRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,9 @@ public class ClienteController {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private ServicoRepository servicoRepository;
 
     @GetMapping
     public ResponseEntity<List<DetalhesCliente>> listar(Pageable pageable){
@@ -51,6 +57,16 @@ public class ClienteController {
         clienteRepository.save(cliente);
         var url = uri.path("/clientes/{id}").buildAndExpand(cliente.getCodigo()).toUri();
         return ResponseEntity.created(url).body(new DetalhesCliente(cliente));
+    }
+
+    @PutMapping("{idCliente}/servico/{idServico}")
+    @Transactional
+    public ResponseEntity<DetalhesClienteServico> put(@PathVariable("idCliente") Long idCliente,
+                                                      @PathVariable("idServico") Long idServico) {
+        var cliente = clienteRepository.getReferenceById(idCliente);
+        var servico = servicoRepository.getReferenceById(idServico);
+        cliente.getServico().add(servico); //Acessa a lista de tags do post e adiciona a nova tag
+        return ResponseEntity.ok(new DetalhesClienteServico(cliente));
     }
 
     @PutMapping("{id}")

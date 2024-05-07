@@ -4,6 +4,7 @@ import br.com.Personal.Assist.dto.servico.CadastroServico;
 import br.com.Personal.Assist.dto.servico.DetalhesServico;
 import br.com.Personal.Assist.model.servico.Servico;
 import br.com.Personal.Assist.repository.servico.ServicoRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class ServicoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<DetalhesServico> cadastrar(@RequestBody CadastroServico servicoPost,
+    public ResponseEntity<DetalhesServico> cadastrar(@RequestBody @Valid CadastroServico servicoPost,
                                                      UriComponentsBuilder uri){
         var servico = new Servico(servicoPost);
         repository.save(servico);

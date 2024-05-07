@@ -1,12 +1,16 @@
 package br.com.Personal.Assist.model.servico;
 
 import br.com.Personal.Assist.dto.servico.CadastroServico;
+import br.com.Personal.Assist.model.cliente.Cliente;
+import br.com.Personal.Assist.model.empresa.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,6 +39,12 @@ public class Servico {
     @Column(name = "CATEG_SERVICO", length = 50, nullable = false)
     @Enumerated(EnumType.STRING)
     private CategoriaServico categoria;
+
+    @ManyToMany(mappedBy = "servico")
+    private List<Empresa> empresas;
+
+    @ManyToMany(mappedBy = "servico")
+    private List<Cliente> clientes;
 
     public Servico(CadastroServico servico){
         nome = servico.nome();

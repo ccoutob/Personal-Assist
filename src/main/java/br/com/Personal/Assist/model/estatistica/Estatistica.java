@@ -11,6 +11,7 @@ import lombok.Setter;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -49,7 +50,6 @@ public class Estatistica {
     @ManyToOne
     @JoinColumn(name = "estatisticasCliente")
     private Cliente cliente;
-
 
     public Estatistica(CadastroEstatistica estatistica){
         mediaCrescimento = estatistica.mediaCrescimento();

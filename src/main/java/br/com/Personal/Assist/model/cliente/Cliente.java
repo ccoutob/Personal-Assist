@@ -3,6 +3,7 @@ package br.com.Personal.Assist.model.cliente;
 
 import br.com.Personal.Assist.dto.cliente.CadastroCliente;
 import br.com.Personal.Assist.model.estatistica.Estatistica;
+import br.com.Personal.Assist.model.feedback.Feedback;
 import br.com.Personal.Assist.model.suporte.Suporte;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -56,6 +57,9 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private List<Estatistica> estatisticasCliente;
 
+    @OneToOne(mappedBy = "cliente", cascade = CascadeType.REMOVE)
+    private Feedback feedback;
+
     //Dto da classe
     public Cliente(CadastroCliente cliente){
         nome = cliente.nome();
@@ -63,6 +67,8 @@ public class Cliente {
         cpf = cliente.cpf();
         perfil = cliente.perfil();
         objetivo = cliente.objetivo();
+        feedback = new Feedback(cliente);
+        feedback.setCliente(this);
     }
 
     //Dto da classe

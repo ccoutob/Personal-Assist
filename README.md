@@ -27,10 +27,10 @@ Nosso sistema fornece serviços de recomendação de negócios juntamente com um
 <li>• Fornece suporte e assistência personalizada aos clientes por meio de um assistente virtual inteligente.</li>
 
 ## 📋  Modelo Relacional das Entidades 
-![Modelo Logico Personal Assist](https://github.com/ccoutob/Personal-Assist/assets/126828978/c6873979-f0cc-4951-bcca-dda746509cb9)
-
+![Relational 1](https://github.com/ccoutob/Personal-Assist/assets/126828978/2ff156d0-3fd8-42be-b563-146fa6069f0f)
 ## 📋 Modelo Lógico das Entidades
-![Modelo Relacional Personal Assist](https://github.com/ccoutob/Personal-Assist/assets/126828978/2e8318ec-1cb4-45ac-9b78-1a0a0d33f6fe)
+![Logical](https://github.com/ccoutob/Personal-Assist/assets/126828978/f3cd0fc8-79d0-4acc-b342-522bb74eca84)
+
 
 <div>
 <h1 align="center"> 📦 Pacotes do Projeto </h1>

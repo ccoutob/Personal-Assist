@@ -86,4 +86,22 @@ public class EmpresaController {
         empresaRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("{idEmpresa}/servico")
+    @Transactional
+    public ResponseEntity<Void> deleteServicos(@PathVariable("idEmpresa") Long idEmpresa){
+        var empresa = empresaRepository.getReferenceById(idEmpresa);
+        empresa.getServico().clear();
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("{idEmpresa}/servico/{idServico}")
+    @Transactional
+    public ResponseEntity<Void> delete(@PathVariable("idEmpresa") Long idEmpresa,
+                                       @PathVariable("idServico") Long idServico) {
+        var empresa = empresaRepository.getReferenceById(idEmpresa);
+        var servico = servicoRepository.getReferenceById(idServico);
+        empresa.getServico().remove(servico);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -84,4 +84,22 @@ public class ClienteController {
         clienteRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("{idCliente}/servico")
+    @Transactional
+    public ResponseEntity<Void> deleteServicos(@PathVariable("idCliente") Long idCliente){
+        var cliente = clienteRepository.getReferenceById(idCliente);
+        cliente.getServico().clear();
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("{idCliente}/servico/{idServico}")
+    @Transactional
+    public ResponseEntity<Void> delete(@PathVariable("idCliente") Long idCliente,
+                                       @PathVariable("idServico") Long idServico) {
+        var cliente = clienteRepository.getReferenceById(idCliente);
+        var servico = servicoRepository.getReferenceById(idServico);
+        cliente.getServico().remove(servico);
+        return ResponseEntity.noContent().build();
+    }
 }

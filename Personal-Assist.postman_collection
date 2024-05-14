@@ -1,0 +1,791 @@
+{
+	"info": {
+		"_postman_id": "c23bdca6-860a-45db-9f9c-502e7e918c79",
+		"name": "Personal Assist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29974256"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Thiago\",\r\n    \"email\": \"thiagogil@gmail.com\",\r\n    \"cpf\": \"123423423\", //valor unico\r\n    \"perfil\": \"PREMIUM\",\r\n    \"objetivo\": \"Receber análises estatisticas e resumos escritos de meus investimentos\",\r\n    \"nota\": 2, //Aqui inicia o feedback do cliente\r\n    \"positivo\": \"feedback positivo!\",\r\n    \"negativo\": \"feedback negativo!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Thiago\",\r\n    \"email\": \"thiagogil@gmail.com\",\r\n    \"cpf\": \"23451234565\",\r\n    \"perfil\": \"PREMIUM\",\r\n    \"objetivo\": \"Receber análises estatisticas e resumos escritos de meus investimentos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/clientes/2952",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"2952"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clientes/953",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"953"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar Servico ao Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clientes/2952/servico/2952",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"2952",
+								"servico",
+								"2952"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover um Servico do Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clientes/2752/servico/2002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"2752",
+								"servico",
+								"2002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Empresa",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empresas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"NTJOTA Desenvolvimentos\",\r\n    \"cnpj\": \"12312332132121\",\r\n    \"seguimento\": \"MARKETING\",\r\n    \"nota\": 2, //Aqui inicia o feedback da empresa\r\n    \"positivo\": \"feedback positivo!\",\r\n    \"negativo\": \"feedback negativo!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/empresas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"NTJOTA Desenvolvimentos\",\r\n    \"cnpj\": \"12312332132122\",\r\n    \"seguimento\": \"MARKETING\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/empresas/3002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas",
+								"3002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empresas/953",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas",
+								"953"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar Servico a Empresa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/empresas/3002/servico/2952",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas",
+								"3002",
+								"servico",
+								"2952"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover um Servico da Empresa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empresas/2152/servico/2002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas",
+								"2152",
+								"servico",
+								"2002"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estatistica",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estatisticas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estatisticas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mediaCrescimento\": 25,\r\n    \"crescimentoMensal\": 2,\r\n    \"receita\": 450000,\r\n    \"analise\": \"Em quize meses teremos o ROI do nosso produto\",\r\n    \"dataRegistro\": \"2024-03-24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estatisticas/953",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estatisticas",
+								"953"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estatisticas/953",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estatisticas",
+								"953"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Estatistica p Empresa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mediaCrescimento\": 25,\r\n    \"crescimentoMensal\": 2,\r\n    \"receita\": 450000,\r\n    \"analise\": \"Insira analise aqui\",\r\n    \"dataRegistro\": \"2024-03-25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estatisticas/3002/estatisticaEmpresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estatisticas",
+								"3002",
+								"estatisticaEmpresa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Estatistica p Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mediaCrescimento\": 25,\r\n    \"crescimentoMensal\": 2,\r\n    \"receita\": 450000,\r\n    \"analise\": \"Insira analise aqui\",\r\n    \"dataRegistro\": \"2024-03-25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estatisticas/2952/estatisticaCliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estatisticas",
+								"2952",
+								"estatisticaCliente"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Servico",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/servico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"servico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Acompanhamento de progressão do produto\",\r\n    \"descricao\": \"O produto de nosso cliente está sendo acompanhado. Logo teremos o feedback\",\r\n    \"preco\": 150,\r\n    \"categoria\": \"COMPLETO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/servico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"servico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Acompanhamento de progressão do produto\",\r\n    \"descricao\": \"O produto de nosso cliente está sendo acompanhado. Logo teremos o feedback\",\r\n    \"preco\": 12000,\r\n    \"categoria\": \"BASICO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/servico/953",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"servico",
+								"953"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/servico/953",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"servico",
+								"953"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Servico da Empresa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/empresas/2152/servico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"empresas",
+								"2152",
+								"servico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover Servico do Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clientes/2752/servico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"2752",
+								"servico"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Suporte",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/suporte",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"suporte"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro Suporte p Clientes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"O usuario nao consegue fazer login\",\r\n    \"status\": \"EM_ANALISE\",\r\n    \"prioridade\": \"P1\",\r\n    \"dataCriacao\": \"2024-05-05\",\r\n    \"dataFinal\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/suporte/2952/suporteCliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"suporte",
+								"2952",
+								"suporteCliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro Suporte p Empresas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descricao\": \"Site fora do ar\",\r\n    \"status\": \"EM_ANALISE\",\r\n    \"prioridade\": \"P1\",\r\n    \"dataCriacao\": \"2024-05-05\",\r\n    \"dataFinal\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/suporte/3002/suporteEmpresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"suporte",
+								"3002",
+								"suporteEmpresa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\": 953,\r\n    \"descricao\": \"O sistema esta fora do ar\",\r\n    \"status\": \"FINALIZADO\",\r\n    \"prioridade\": \"P3\",\r\n    \"dataCriacao\": \"2024-02-15\",\r\n    \"dataFinal\": \"2024-02-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/suporte/953",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"suporte",
+								"953"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/suporte/2952",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"suporte",
+								"2952"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feedback",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/feedback",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nota\": 10,\r\n    \"positivo\": \"feedback positivo!\",\r\n    \"negativo\": \"feedback negativo!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/feedback/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feedback",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/feedback/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feedback",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -4,6 +4,7 @@ import br.com.Personal.Assist.dto.cliente.CadastroCliente;
 import br.com.Personal.Assist.dto.empresa.CadastroEmpresa;
 import br.com.Personal.Assist.dto.empresa.DetalhesEmpresa;
 import br.com.Personal.Assist.model.estatistica.Estatistica;
+import br.com.Personal.Assist.model.feedback.Feedback;
 import br.com.Personal.Assist.model.servico.Servico;
 import br.com.Personal.Assist.model.suporte.Suporte;
 import jakarta.persistence.*;
@@ -58,10 +59,15 @@ public class Empresa {
             inverseJoinColumns = @JoinColumn(name="ID_SERVICO"))
     private Set<Servico> servico = new HashSet<>();
 
+    @OneToOne(mappedBy = "empresa", cascade = CascadeType.ALL)
+    private Feedback feedback;
+
     public Empresa(CadastroEmpresa empresa){
         nome = empresa.nome();
         cnpj = empresa.cnpj();
         seguimento = empresa.seguimento();
+        feedback = new Feedback(empresa);
+        feedback.setEmpresa(this);
     }
 
     public void atualizarDados(CadastroEmpresa atualizacao){

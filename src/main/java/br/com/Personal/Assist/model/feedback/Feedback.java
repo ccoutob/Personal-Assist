@@ -1,8 +1,10 @@
 package br.com.Personal.Assist.model.feedback;
 
 import br.com.Personal.Assist.dto.cliente.CadastroCliente;
+import br.com.Personal.Assist.dto.empresa.CadastroEmpresa;
 import br.com.Personal.Assist.dto.feedback.CadastroFeedback;
 import br.com.Personal.Assist.model.cliente.Cliente;
+import br.com.Personal.Assist.model.empresa.Empresa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,10 +37,20 @@ public class Feedback {
     private String negativo;
 
     @OneToOne
-    @JoinColumn(name = "ID_CLIENTE", nullable = false, unique = true)
+    @JoinColumn(name = "ID_CLIENTE", unique = true)
     private Cliente cliente;
 
+    @OneToOne
+    @JoinColumn(name = "ID_EMPRESA", unique = true)
+    private Empresa empresa;
+
     public Feedback(CadastroCliente feedback){
+        nota = feedback.nota();
+        positivo = feedback.positivo();
+        negativo = feedback.negativo();
+    }
+
+    public Feedback(CadastroEmpresa feedback){
         nota = feedback.nota();
         positivo = feedback.positivo();
         negativo = feedback.negativo();

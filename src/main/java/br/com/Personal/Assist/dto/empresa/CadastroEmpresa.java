@@ -10,5 +10,10 @@ public record CadastroEmpresa(@NotBlank @Size(max = 100)
                               @NotBlank @Size(max = 14)
                               String cnpj,
                               @NotNull
-                              SegEmpresa seguimento) {
+                              SegEmpresa seguimento,
+                              @NotNull Integer nota,
+                              @NotBlank @Size(max = 255)
+                              String positivo,
+                              @NotBlank @Size(max = 255)
+                              String negativo) {
 }

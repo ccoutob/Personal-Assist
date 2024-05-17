@@ -118,6 +118,59 @@ Nosso sistema fornece serviços de recomendação de negócios juntamente com um
 
 ❗❗ Acesse o arquivo de requisições do postman <a href="https://github.com/ccoutob/Personal-Assist/blob/main/Personal_Assist_Postman_Collection">AQUI</a> ❗❗
 
+<h1 name="objetivo">🎯 Funcionalidades do projeto adicionadas na Sprint 2</h1>
+<li>Tabelas relacionadas por chave estrangeira, agora se comunicam entre si. Relacionamentos 1:1, 1:N e N:M</li>
+<li>Nova tabela NFE adicionada, se relacionando com a tabela CLIENTE em um relacionamento 1:1</li>
+<li>Requisições estrangeiras no Postman estão nomeadas, garantindo organização</li>
+
+### 💻 Feedback
+> O POST desta tabela já é automaticamente adicionada na inserção de dados da Empresa e do Cliente - Cadastrando um dos dois já é inserido o feedback 
+
+| Método | Endpoint                  | Descrição                 |
+| ------ | --------------------------| --------------------------|
+| GET    | /feedback                 | Listar todos os feedbacks |
+| GET    | /feedback/&lt;id&gt;      | Buscar feedback por id    |
+| PUT    | /feedback/&lt;id&gt;      | Atualizar um feedback     |
+| DELETE | /feedback/&lt;id&gt;      | Deletar um feedback       |
+
+### 🌐Endpoints das chaves estrangeiras
+
+### 💻 Cliente
+| Método | Endpoint                                              | Descrição                         | 
+| ------ | ----------------------------------------------------- | ----------------------------------|
+| PUT    | /clientes/&lt;idCliente&gt;/servico/&lt;idServico&gt; | Adicionar um servico a um cliente |
+| DELETE | /clientes/&lt;idCliente&gt;/servico/&lt;idServico&gt; | Deletar o servico de um cliente   |
+
+### 💻 Empresa
+| Método | Endpoint                                             | Descrição                          | 
+| ------ | ---------------------------------------------------- | -----------------------------------|
+| PUT    | /empresa/&lt;idEmpresa&gt;/servico/&lt;idServico&gt; | Adicionar um servico a uma empresa |
+| DELETE | /empresa/&lt;idEmpresa&gt;/servico/&lt;idServico&gt; | Deletar o servico de uma empresa   |
+
+### 💻 Estatistica
+> Agora a Tabela ESTATISTICA deve realizar o metodo post já associando a tabela Empresa ou Cliente
+
+| Método | Endpoint                                           | Descrição                            |
+| ------ | -------------------------------------------------- | -------------------------------------|
+| POST   | /estatisticas/&lt;idEmpresa&gt;/estatisticaEmpresa | Cadastrar uma estatistica da empresa |
+| POST   | /estatisticas/&lt;idCliente&gt;/estatisticaCliente | Cadastrar uma estatistica do cliente |
+
+### 💻 Servico
+
+| Método | Endpoint                            | Descrição                        |
+| ------ | ------------------------------------| ---------------------------------|
+| DELETE | /empresas/&lt;idEmpresa&gt;/servico | Deletar o servico de uma empresa |
+| DELETE | /clientes/&lt;idCliente&gt;/servico | Deletar o servico de um cliente  |
+
+### 💻 Suporte
+
+| Método | Endpoint                                  | Descrição                             |
+| ------ | ------------------------------------------| --------------------------------------|
+| POST   | /suporte/&lt;idSuporte&gt;/suporteCliente | Cadastrar o suporte para um cliente   |
+| POST   | /suporte/&lt;idSuporte&gt;/suporteEmpresa | Cadastrar o suporte para uma empresa  |
+
+
+
 ### 🧑🏻‍💻 Autor 
 > Cauã Couto Basques - Turma 2TDSS
 

@@ -1,4 +1,4 @@
-<h1 align="center">
+![Logico](https://github.com/ccoutob/Personal-Assist/assets/126828978/db151bce-58b6-4db1-9db7-0982477623ab)<h1 align="center">
 <br>Personal Assist 🤖
 </h1>
 
@@ -29,8 +29,7 @@ Nosso sistema fornece serviços de recomendação de negócios juntamente com um
 ## 📋  Modelo Relacional das Entidades 
 ![Relacional](https://github.com/ccoutob/Personal-Assist/assets/126828978/7e63b000-e409-4865-b734-ac499fff2448)
 ## 📋 Modelo Lógico das Entidades
-![Logical](https://github.com/ccoutob/Personal-Assist/assets/126828978/f3cd0fc8-79d0-4acc-b342-522bb74eca84)
-
+![Logico](https://github.com/ccoutob/Personal-Assist/assets/126828978/5c4f7c5d-f988-4a87-a13c-2b035bf6d3ae)
 
 <div>
 <h1 align="center"> 📦 Pacotes do Projeto </h1>

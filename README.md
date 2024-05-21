@@ -1,4 +1,4 @@
-<h1>Personal Assist 🤖 </h1>
+<h1 align="center">Personal Assist 🤖 </h1>
 
 <div align="center">
 

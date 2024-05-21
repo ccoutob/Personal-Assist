@@ -1,6 +1,4 @@
-![Logico](https://github.com/ccoutob/Personal-Assist/assets/126828978/db151bce-58b6-4db1-9db7-0982477623ab)<h1 align="center">
-<br>Personal Assist 🤖
-</h1>
+<h1>Personal Assist 🤖 </h1>
 
 <div align="center">
 
@@ -168,6 +166,9 @@ Nosso sistema fornece serviços de recomendação de negócios juntamente com um
 | POST   | /suporte/&lt;idSuporte&gt;/suporteCliente | Cadastrar o suporte para um cliente   |
 | POST   | /suporte/&lt;idSuporte&gt;/suporteEmpresa | Cadastrar o suporte para uma empresa  |
 
+<br>
+
+❗❗ Para mais informações, veja o vídeo explicativo de nosso sistema <a href=https://youtu.be/LeKTfMQguW4> AQUI </a> ❗❗
 
 
 ### 🧑🏻‍💻 Autor 

@@ -6,6 +6,7 @@ import br.com.Personal.Assist.dto.security.autenticacao.TokenJwtDto;
 import br.com.Personal.Assist.model.user.Usuario;
 import br.com.Personal.Assist.service.TokenService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("login")
+@Tag(name = "Autenticação", description = "Operações relacionadas a autenticação da nossa API")
 public class AutenticacaoController {
 
     @Autowired

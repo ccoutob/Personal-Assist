@@ -5,6 +5,7 @@ import br.com.Personal.Assist.dto.security.usuario.CadastroUsuarioDto;
 import br.com.Personal.Assist.dto.security.usuario.DetalhesUsuarioDto;
 import br.com.Personal.Assist.model.user.Usuario;
 import br.com.Personal.Assist.repository.user.UsuarioRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("auth")
+@Tag(name = "Usuario", description = "Operações relacionadas ao Usuario do nosso sistema")
 public class UsuarioController {
 
     @Autowired

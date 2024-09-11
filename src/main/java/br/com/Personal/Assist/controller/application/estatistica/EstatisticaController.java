@@ -8,6 +8,7 @@ import br.com.Personal.Assist.model.application.estatistica.Estatistica;
 import br.com.Personal.Assist.repository.application.cliente.ClienteRepository;
 import br.com.Personal.Assist.repository.application.empresa.EmpresaRepository;
 import br.com.Personal.Assist.repository.application.estatistica.EstatisticaRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +21,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RequestMapping("estatisticas")
-@Controller
+@RestController
+@Tag(name = "Estatística", description = "Operações relacionadas as Estatísticas dos nossos clientes")
 public class EstatisticaController {
 
     @Autowired

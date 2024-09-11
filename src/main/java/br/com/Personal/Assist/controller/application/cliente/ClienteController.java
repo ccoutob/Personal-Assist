@@ -6,6 +6,7 @@ import br.com.Personal.Assist.dto.application.cliente.DetalhesClienteServico;
 import br.com.Personal.Assist.model.application.cliente.Cliente;
 import br.com.Personal.Assist.repository.application.cliente.ClienteRepository;
 import br.com.Personal.Assist.repository.application.servico.ServicoRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RequestMapping("clientes")
-@Controller
+@RestController
+@Tag(name = "Cliente", description = "Operações relacionadas aos clientes da Personal Assist")
 public class ClienteController {
 
     @Autowired

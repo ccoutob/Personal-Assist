@@ -3,6 +3,7 @@ package br.com.Personal.Assist.controller.application.feedback;
 import br.com.Personal.Assist.dto.application.feedback.CadastroFeedback;
 import br.com.Personal.Assist.dto.application.feedback.DetalhesFeedback;
 import br.com.Personal.Assist.repository.application.feedback.FeedbackRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping("feedback")
-@Controller
+@RestController
+@Tag(name = "Feedback", description = "Operações relacionadas ao Feedback de empresas e clientes")
 public class FeedbackController {
 
     @Autowired

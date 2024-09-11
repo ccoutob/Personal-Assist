@@ -7,6 +7,7 @@ import br.com.Personal.Assist.model.application.suporte.Suporte;
 import br.com.Personal.Assist.repository.application.cliente.ClienteRepository;
 import br.com.Personal.Assist.repository.application.empresa.EmpresaRepository;
 import br.com.Personal.Assist.repository.application.suporte.SuporteRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RequestMapping("suporte")
-@Controller
+@RestController
+@Tag(name = "Suporte", description = "Operações relacionadas ao Suporte da personal asssit")
 public class SuporteController {
     @Autowired
     private ClienteRepository clienteRepository;

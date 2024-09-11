@@ -4,6 +4,7 @@ import br.com.Personal.Assist.dto.application.servico.CadastroServico;
 import br.com.Personal.Assist.dto.application.servico.DetalhesServico;
 import br.com.Personal.Assist.model.application.servico.Servico;
 import br.com.Personal.Assist.repository.application.servico.ServicoRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +17,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RequestMapping("servico")
-@Controller
+@RestController
+@Tag(name = "Servico", description = "Operações relacionadas ao Serviço da Personal Assist")
 public class ServicoController {
 
     @Autowired

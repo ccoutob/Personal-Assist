@@ -7,6 +7,7 @@ import br.com.Personal.Assist.model.application.suporte.Suporte;
 import br.com.Personal.Assist.repository.application.cliente.ClienteRepository;
 import br.com.Personal.Assist.repository.application.empresa.EmpresaRepository;
 import br.com.Personal.Assist.repository.application.suporte.SuporteRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class SuporteController {
     private EmpresaRepository empresaRepository;
 
     @GetMapping
+    @Operation(summary = "Listar todos os suportes")
     public ResponseEntity<List<DetalhesSuporteCliente>> listar(Pageable pageable){
         var lista = suporteRepository.findAll(pageable)
                 .stream().map(DetalhesSuporteCliente::new).toList();
@@ -39,6 +41,7 @@ public class SuporteController {
     }
 
     @GetMapping("{id}")
+    @Operation(summary = "Listar suporte por ID")
     public ResponseEntity<DetalhesSuporteCliente> buscar(@PathVariable("id") Long id){
         var suporte = suporteRepository.getReferenceById(id);
         return ResponseEntity.ok(new DetalhesSuporteCliente(suporte));
@@ -47,6 +50,7 @@ public class SuporteController {
     //Post da tabela Suporte para Clientes
     @PostMapping("{id}/suporteCliente")
     @Transactional
+    @Operation(summary = "Cadastrar suporte para cliente")
     public ResponseEntity<DetalhesSuporteCliente> postSuporteCliente(@PathVariable("id") Long id,
                                                               @RequestBody @Valid CadastroSuporte dto,
                                                               UriComponentsBuilder uriBuilder){
@@ -60,6 +64,7 @@ public class SuporteController {
     //Post da tabela Suporte para Empresas
     @PostMapping("{id}/suporteEmpresa")
     @Transactional
+    @Operation(summary = "Cadastrar suporte para empresa")
     public ResponseEntity<DetalhesSuporteEmpresa> postSuporteEmpresa(@PathVariable("id") Long id,
                                                               @RequestBody @Valid CadastroSuporte dto,
                                                               UriComponentsBuilder uriBuilder){
@@ -72,6 +77,7 @@ public class SuporteController {
 
     @DeleteMapping("{id}")
     @Transactional
+    @Operation(summary = "Deletar suporte por ID")
     public ResponseEntity<Void> deletar(@PathVariable("id") Long id){
         suporteRepository.deleteById(id);
         return ResponseEntity.noContent().build();
@@ -79,6 +85,7 @@ public class SuporteController {
 
     @PutMapping("{id}")
     @Transactional
+    @Operation(summary = "Atualizar suporte por ID")
     public ResponseEntity<DetalhesSuporteCliente> atualizar(@PathVariable("id") Long id,
                                                      @RequestBody CadastroSuporte suportePut){
         var suporte = suporteRepository.getReferenceById(id);

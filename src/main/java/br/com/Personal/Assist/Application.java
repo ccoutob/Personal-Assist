@@ -10,6 +10,8 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	//Utilize "http://localhost:8080/swagger-ui/index.html" para acessar nossa documentação com swagger
+
 	//nickis linda 003
 	//Kaique fofinho 004
 

@@ -8,6 +8,7 @@ import br.com.Personal.Assist.model.application.estatistica.Estatistica;
 import br.com.Personal.Assist.repository.application.cliente.ClienteRepository;
 import br.com.Personal.Assist.repository.application.empresa.EmpresaRepository;
 import br.com.Personal.Assist.repository.application.estatistica.EstatisticaRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class EstatisticaController {
     private ClienteRepository clienteRepository;
 
     @GetMapping
+    @Operation(summary = "Listar todas as estatisticas", description = "Lista todas as estatisticas do nosso sistema")
     public ResponseEntity<List<DetalhesEstatistica>> listar(Pageable pageable){
         var lista = estatisticarepository.findAll(pageable)
                 .stream().map(DetalhesEstatistica::new).toList();
@@ -42,6 +44,7 @@ public class EstatisticaController {
     }
 
     @GetMapping("{id}")
+    @Operation(summary = "Listar estatistica pelo ID", description = "Lista a estatistica especificada pelo ID")
     public ResponseEntity<DetalhesEstatistica> buscar(@PathVariable("id") Long id){
         var estatistica = estatisticarepository.getReferenceById(id);
         return ResponseEntity.ok(new DetalhesEstatistica(estatistica));
@@ -50,6 +53,7 @@ public class EstatisticaController {
     //Post da tabela Estatistica para Clientes
     @PostMapping("{id}/estatisticaCliente")
     @Transactional
+    @Operation(summary = "Cadastrar estatistica do cliente", description = "Cadastra uma estatistica do cliente")
     public ResponseEntity<DetalhesEstatisticaCliente> postEstatisticaCliente(@PathVariable("id") Long id,
                                                                       @RequestBody @Valid CadastroEstatistica dto,
                                                                       UriComponentsBuilder uriBuilder){
@@ -63,6 +67,7 @@ public class EstatisticaController {
     //Post da tabela Estatistica
     @PostMapping("{id}/estatisticaEmpresa")
     @Transactional
+    @Operation(summary = "Cadastrar estatistica da empresa", description = "Cadastra uma estatistica da empresa")
     public ResponseEntity<DetalhesEstatisticaEmpresa> postEstatisticaEmpresa(@PathVariable("id") Long id,
                                                                       @RequestBody @Valid CadastroEstatistica dto,
                                                                       UriComponentsBuilder uriBuilder){
@@ -75,6 +80,7 @@ public class EstatisticaController {
 
     @PutMapping("{id}")
     @Transactional
+    @Operation(summary = "Atualizar estatistica", description = "Atualiza uma estatistica por id")
     public ResponseEntity<DetalhesEstatistica> atualizar(@PathVariable("id") Long id,
                                                      @RequestBody CadastroEstatistica estatisticaPut){
         var estatistica = estatisticarepository.getReferenceById(id);
@@ -84,6 +90,7 @@ public class EstatisticaController {
 
     @DeleteMapping("{id}")
     @Transactional
+    @Operation(summary = "Deletar estatistica", description = "Deleta uma estatistica por id")
     public ResponseEntity<Void> deletar(@PathVariable("id") Long id){
         estatisticarepository.deleteById(id);
         return ResponseEntity.noContent().build();

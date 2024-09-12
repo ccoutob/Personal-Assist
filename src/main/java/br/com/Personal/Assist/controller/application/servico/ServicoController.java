@@ -4,6 +4,7 @@ import br.com.Personal.Assist.dto.application.servico.CadastroServico;
 import br.com.Personal.Assist.dto.application.servico.DetalhesServico;
 import br.com.Personal.Assist.model.application.servico.Servico;
 import br.com.Personal.Assist.repository.application.servico.ServicoRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class ServicoController {
     private ServicoRepository repository;
 
     @GetMapping
+    @Operation(summary = "Listar todos os Servicos")
     public ResponseEntity<List<DetalhesServico>> listar(Pageable pageable){
         var lista = repository.findAll(pageable)
                 .stream().map(DetalhesServico::new).toList();
@@ -32,6 +34,7 @@ public class ServicoController {
     }
 
     @GetMapping("{id}")
+    @Operation(summary = "Listar servico por ID")
     public ResponseEntity<DetalhesServico> buscar(@PathVariable("id") Long id){
         var servico = repository.getReferenceById(id);
         return ResponseEntity.ok(new DetalhesServico(servico));
@@ -39,6 +42,7 @@ public class ServicoController {
 
     @PostMapping
     @Transactional
+    @Operation(summary = "Cadastrar um Servico")
     public ResponseEntity<DetalhesServico> cadastrar(@RequestBody @Valid CadastroServico servicoPost,
                                                      UriComponentsBuilder uri){
         var servico = new Servico(servicoPost);
@@ -49,6 +53,7 @@ public class ServicoController {
 
     @PutMapping("{id}")
     @Transactional
+    @Operation(summary = "Atualizar servico por ID")
     public ResponseEntity<DetalhesServico> atualizar(@PathVariable("id") Long id,
                                                      @RequestBody CadastroServico servicoPut){
         var servico = repository.getReferenceById(id);
@@ -58,6 +63,7 @@ public class ServicoController {
 
     @DeleteMapping("{id}")
     @Transactional
+    @Operation(summary = "Deletar servico por ID")
     public ResponseEntity<Void> deletar(@PathVariable("id") Long id){
         repository.deleteById(id);
         return ResponseEntity.noContent().build();

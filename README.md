@@ -3,12 +3,12 @@
 <div align="center">
 
 
-| Integrantes     |            Responsabilidades          | Turma      |   RM     |
-| -------------   | ------------------------------------- | ---------- | -------- |
-| Carlos Eduardo  | Documentação do sistema               |  2TDSPV    |  94787   |
-| Cauã Couto      | Desenvolvimento do projeto em Java    |  2TDSS     |  97755   |
-| Kaique Agostinho| Mapeamento das tabelas e relações     |  2TDSS     |  550815  |
-| Thiago Gil      | Documentação do sistema               |  2TDSPV    |  551211  |
+| Integrantes      |            Responsabilidades          | Turma      |   RM     |
+| --------------   | ------------------------------------- | ---------- | -------- |
+| Leonardo Matheus | Documentação do sistema               |  2TDSPN    |  99824   |
+| Cauã Couto       | Desenvolvimento do projeto em Java    |  2TDSS     |  97755   |
+| Kaique Agostinho | Mapeamento das tabelas e relações     |  2TDSS     |  550815  |
+| Thiago Gil       | Documentação do sistema               |  2TDSPV    |  551211  |
 </div>
 
 ## 📝 Descrição do Projeto 

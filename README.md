@@ -173,10 +173,13 @@ Nosso sistema fornece serviços de recomendação de negócios juntamente com um
 <li>Controle de acesso em nossa aplicação, usuário precisa estar logado para realizar requisições</li>
 <li>Documentação da API com seus Endpoints no Swagger</li>
 
+<h1>Sem anonimato 🕵️</h1> 
+<li>Com o sistema de login, nenhum usuário de fora do nosso sistema poderá realizar qualquer ação de CRUD de nossa aplicação</li>
 </br>
 
 ## 📝 Acesso ao Swagger
 Verifique nossa documentação do Swagger <a href=http://localhost:8080/swagger-ui/index.html> AQUI </a>
+> Antes de abrir o link acima é necessário a aplicação já ter sido iniciada
 
 <br>
 ❗❗ Para mais informações, veja o vídeo explicativo de nosso sistema <a href=https://youtu.be/LeKTfMQguW4> AQUI </a> ❗❗
